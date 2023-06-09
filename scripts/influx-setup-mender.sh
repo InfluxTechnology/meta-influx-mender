@@ -19,12 +19,12 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-. ea-setup-release.sh $@
+. influx-setup-release.sh $@
 
 echo "# Mender related layers" >> conf/bblayers.conf
 echo "BBLAYERS += \" \${BSPDIR}/sources/meta-mender-community/meta-mender-imx \"" >> conf/bblayers.conf
 echo "BBLAYERS += \" \${BSPDIR}/sources/meta-mender/meta-mender-core \"" >> conf/bblayers.conf
-echo "BBLAYERS += \" \${BSPDIR}/sources/meta-mender/meta-mender-demo \"" >> conf/bblayers.conf
+#echo "BBLAYERS += \" \${BSPDIR}/sources/meta-mender/meta-mender-demo \"" >> conf/bblayers.conf
 echo "BBLAYERS += \" \${BSPDIR}/sources/meta-ea-mender \"" >> conf/bblayers.conf
 
 cat ../sources/meta-mender-community/templates/local.conf.append >> conf/local.conf
