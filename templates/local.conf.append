@@ -30,5 +30,4 @@ MENDER_BOOT_PART_SIZE_MB = "32"
 # the default value to 2G to limit the size of the sdimg
 # file. The data partition will be increased to fill up
 # the remaining free area at first boot
-MENDER_STORAGE_TOTAL_SIZE_MB = "2048"
-
+MENDER_STORAGE_TOTAL_SIZE_MB = "6144"

@@ -3,7 +3,7 @@
 #
 # i.MX Yocto Project Build Environment Setup Script
 #
-# Copyright 2020 Embedded Artists AB
+# Copyright 2025 Influx Techology LTD
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,14 +21,15 @@
 
 . influx-setup-release.sh $@
 
+echo " " >> conf/bblayers.conf
 echo "# Mender related layers" >> conf/bblayers.conf
 echo "BBLAYERS += \" \${BSPDIR}/sources/meta-mender-community/meta-mender-imx \"" >> conf/bblayers.conf
 echo "BBLAYERS += \" \${BSPDIR}/sources/meta-mender/meta-mender-core \"" >> conf/bblayers.conf
 #echo "BBLAYERS += \" \${BSPDIR}/sources/meta-mender/meta-mender-demo \"" >> conf/bblayers.conf
-echo "BBLAYERS += \" \${BSPDIR}/sources/meta-ea-mender \"" >> conf/bblayers.conf
+#echo "BBLAYERS += \" \${BSPDIR}/sources/meta-influx-mender \"" >> conf/bblayers.conf
 
 cat ../sources/meta-mender-community/templates/local.conf.append >> conf/local.conf
-cat ../sources/meta-ea-mender/templates/local.conf.append >> conf/local.conf
+cat ../sources/meta-influx-mender/templates/local.conf.append >> conf/local.conf
 
 echo ""
 echo "Mender integration complete."
