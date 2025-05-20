@@ -28,7 +28,7 @@ echo "BBLAYERS += \" \${BSPDIR}/sources/meta-mender/meta-mender-core \"" >> conf
 #echo "BBLAYERS += \" \${BSPDIR}/sources/meta-mender/meta-mender-demo \"" >> conf/bblayers.conf
 echo "BBLAYERS += \" \${BSPDIR}/sources/meta-influx-mender \"" >> conf/bblayers.conf
 
-cat ../sources/meta-mender-community/templates/local.conf.append >> conf/local.conf
+#cat ../sources/meta-mender-community/templates/local.conf.append >> conf/local.conf
 cat ../sources/meta-influx-mender/templates/local.conf.append >> conf/local.conf
 
 echo ""
