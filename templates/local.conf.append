@@ -8,7 +8,7 @@ INHERIT += "rm_work"
 # This is what the device will report that it is running, and different updates
 # must have different names because Mender will skip installation of an Artifact
 # if it is already installed.
-MENDER_ARTIFACT_NAME = "release-1"
+MENDER_ARTIFACT_NAME = "image_smart.4.0"
 
 INHERIT += "mender-full"
 
@@ -25,8 +25,8 @@ VIRTUAL-RUNTIME_initscripts = ""
 #    - press the "COPY TO CLIPBOARD"
 #    - assign content of clipboard to MENDER_TENANT_TOKEN
 #
-#MENDER_SERVER_URL = "https://hosted.mender.io"
-#MENDER_TENANT_TOKEN = ""
+MENDER_SERVER_URL = "https://hosted.mender.io"
+MENDER_TENANT_TOKEN = ""
 
 # Build for Mender demo server
 #
@@ -72,7 +72,7 @@ VIRTUAL-RUNTIME_initscripts = ""
 MENDER_FEATURES_ENABLE:append = " mender-uboot mender-image-sd"
 MENDER_FEATURES_DISABLE:append = " mender-grub mender-image-uefi"
 
-PREFERRED_PROVIDER:u-boot-fw-utils = "u-boot-fw-utils-mender-auto-provided"
+PREFERRED_PROVIDER:u-boot-inf = "u-boot-fw-utils-mender-auto-provided"
 IMAGE_FSTYPES:remove = "tar.bz2 ext4 sdcard.bz2"
 
 # dummy value as the WIC plugin requires an entry but this will not be used
@@ -83,16 +83,12 @@ MENDER_IMAGE_BOOTLOADER_FILE = "imx-boot"
 
 # offset to bootloader in number of sectors (512 bytes)
 # for imx8mm it is 33K -> 66 sectors
-MENDER_IMAGE_BOOTLOADER_BOOTSECTOR_OFFSET:imx8mmea-ucom = "66"
-MENDER_IMAGE_BOOTLOADER_BOOTSECTOR_OFFSET:imx8mnea-ucom = "64"
-MENDER_IMAGE_BOOTLOADER_BOOTSECTOR_OFFSET:imx8mqea-com = "66"
+MENDER_IMAGE_BOOTLOADER_BOOTSECTOR_OFFSET:imx8mm-smart = "66"
 
 do_image_sdimg[depends] += "imx-boot:do_deploy"
 
 # Storage device name
-MENDER_STORAGE_DEVICE:imx8mmea-ucom = "/dev/mmcblk2"
-MENDER_STORAGE_DEVICE:imx8mnea-ucom = "/dev/mmcblk2"
-MENDER_STORAGE_DEVICE:imx8mqea-ucom = "/dev/mmcblk0"
+MENDER_STORAGE_DEVICE:imx8mm-smart = "/dev/mmcblk2"
 
 # size of the boot partition
 MENDER_BOOT_PART_SIZE_MB = "32"

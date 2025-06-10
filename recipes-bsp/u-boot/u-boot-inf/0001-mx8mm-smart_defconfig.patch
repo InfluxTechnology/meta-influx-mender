@@ -1,5 +1,5 @@
---- a/configs/mx8mm-influx-rex-smart_defconfig	2024-11-27 14:55:05.584935237 +0000
-+++ b/configs/mx8mm-influx-rex-smart_defconfig	2025-05-16 12:55:05.000115454 +0000
+--- a/configs/mx8mm-influx-smart_defconfig	2024-11-27 14:55:05.584935237 +0000
++++ b/configs/mx8mm-influx-smart_defconfig	2025-05-16 12:55:05.000115454 +0000
 @@ -7,8 +7,8 @@
  CONFIG_SPL_LIBCOMMON_SUPPORT=y
  CONFIG_SPL_LIBGENERIC_SUPPORT=y
