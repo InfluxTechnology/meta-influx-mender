@@ -31,6 +31,8 @@ echo "BBLAYERS += \" \${BSPDIR}/sources/meta-influx-mender \"" >> conf/bblayers.
 #cat ../sources/meta-mender-community/templates/local.conf.append >> conf/local.conf
 cat ../sources/meta-influx-mender/templates/local.conf.append >> conf/local.conf
 
+cp ../sources/meta-influx-mender/scripts/deploy-image.sh ./
+
 echo ""
 echo "Mender integration complete."
 echo ""
