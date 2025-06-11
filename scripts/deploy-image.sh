@@ -9,7 +9,7 @@ if [[ ! -d $CURR_DIR ]]; then
 fi
 
 BUILD="influx-image-base"
-MACHINE=$(sudo cat $CURR_DIR/conf/local.conf | grep 'MACHINE' | sed "s/'//g" | sed "s/ //g" | awk -F '??=' '{print $2}')
+MACHINE=$(sudo cat $CURR_DIR/conf/local.conf | grep 'MACHINE' | grep -v 'IMAGE_BOOT_FILES' | sed "s/'//g" | sed "s/ //g" | awk -F '??=' '{print $2}')
 
 TMP_DIR=$CURR_DIR"/tmp/deploy/images/""$MACHINE"
 UUU_DIR=$PWD"/uuu-deploy/"
