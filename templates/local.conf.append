@@ -1,100 +1,49 @@
 
-# Appended fragment from meta-mender-community/templates
+# Mender update support
 
-# This really saves a lot of disk space!
 INHERIT += "rm_work"
-
-# The name of the disk image and Artifact that will be built.
-# This is what the device will report that it is running, and different updates
-# must have different names because Mender will skip installation of an Artifact
-# if it is already installed.
-MENDER_ARTIFACT_NAME = "image_smart.4.0"
-
 INHERIT += "mender-full"
+
+MENDER_ARTIFACT_NAME = "image_smart.4.0"
 
 DISTRO_FEATURES:append = " systemd"
 VIRTUAL-RUNTIME_init_manager = "systemd"
 DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
 VIRTUAL-RUNTIME_initscripts = ""
 
-# Build for Hosted Mender
-#
-# To get your tenant token:
-#    - log in to https://hosted.mender.io
-#    - click your email at the top right and then "My organization"
-#    - press the "COPY TO CLIPBOARD"
-#    - assign content of clipboard to MENDER_TENANT_TOKEN
-#
 MENDER_SERVER_URL = "https://hosted.mender.io"
-MENDER_TENANT_TOKEN = ""
+MENDER_TENANT_TOKEN = "eyJhbGciOiJSUzI1NiIsImtpZCI6MCwidHlwIjoiSldUIn0.eyJqdGkiOiJiYWZkODFjZC1jN2NkLTQxY2ItOTU3Yi01ZGYzZTZhYjBiMGYiLCJzdWIiOiI1MmEyMmUyZS03OGQzLTQ2MmItYjkzYy1mZDc1YmVmOTE4ZWMiLCJleHAiOjE3NTEyNjQzMTcsImlhdCI6MTc1MDY1OTUxNywibWVuZGVyLnRlbmFudCI6IjY4NTAyNmI3MTFlYjhjODM1OGZlYjIxMSIsIm1lbmRlci51c2VyIjp0cnVlLCJpc3MiOiJldS5ob3N0ZWQubWVuZGVyLmlvIiwic2NwIjoibWVuZGVyLioiLCJtZW5kZXIucGxhbiI6ImVudGVycHJpc2UiLCJtZW5kZXIudHJpYWwiOnRydWUsIm1lbmRlci5hZGRvbnMiOlt7Im5hbWUiOiJjb25maWd1cmUiLCJlbmFibGVkIjp0cnVlfSx7Im5hbWUiOiJ0cm91Ymxlc2hvb3QiLCJlbmFibGVkIjp0cnVlfSx7Im5hbWUiOiJtb25pdG9yIiwiZW5hYmxlZCI6dHJ1ZX1dLCJuYmYiOjE3NTA2NTk1MTd9.KtRbpBA53LWUokcOzxKHuyz042O2UBCLF454ZMmEVUIhe0OFgmC2GwdW8F7KalPgFg0R6_sAE0qJv3RJavirutQgMQ9K9LXt36OySV_6EZ0qbxem0BygRpa4lrxOO7dQuq727pj2ovQNNULTBm7xifO1SmAgsza8yCCR4gyWMbzsziFCEniiaUpD7z2GMx-nDQsxixJLX7Ts3pmOo-4nLCg6c9lCtUG7hnyI95mY0rYW23WKVkCUnURyMrNvkwo0hHEaoLZzj-rffGYFDkh8dFQqgMonr-F_onPomzkXWiqf3qc8lSI6fFgBD0hGSrSnZaJbfn93dJ4tX-eAcD01o2OkRseB8iiu6nQEWZD55g8r6wSIIHT8nZkKSqL6RIQZa6e5npZGckAxMNY7Mk1utb28EXo6hSujJGAEWFJeLgrbv1vccZzCK1qaOQf53xW8ZGWnhV99eAR4DezJKkiyS6JvFe94dUmvIEokSXwnVUfF7fhv4NjqoRuhnAHxmlpm"
 
-# Build for Mender demo server
-#
-# https://docs.mender.io/getting-started/create-a-test-environment
-#
-# Uncomment below and update IP address to match the machine running the
-# Mender demo server
 #MENDER_DEMO_HOST_IP_ADDRESS = "192.168.0.100"
 
-# Build for Mender production setup (on-prem)
-#
-# https://docs.mender.io/artifacts/building-for-production
-#
-# Uncomment below and update the URL to match your configured domain
-# name and provide the path to the generated server.crt file.
-#
-# NOTE! It is recommend that you provide below information in your custom
-# Yocto layer and this is only for demo purposes. See linked documentation
-# for additional information.
 #MENDER_SERVER_URL = "https://docker.mender.io"
 #FILESEXTRAPATHS:prepend:pn-mender := "<DIRECTORY-CONTAINING-server.crt>:"
 #SRC_URI:append:pn-mender = " file://server.crt"
 
-# Mender storage configuration
-#
-# More details on these variables is available at
-#    https://docs.mender.io/devices/yocto-project/partition-configuration#configuring-storage
-#
-# Also, please be sure to check other config files as other
-# layers, config fragments, etc may attempt to set values
-# for specific platforms.  Using "bitbake -e <image-name>"
-# can help determine which files are setting these values
-# in a given configuration.
-#
-# MENDER_STORAGE_TOTAL_SIZE_MB = "2048"
-# MENDER_BOOT_PART_SIZE_MB = "16"
-# MENDER_DATA_PART_SIZE_MB = "1024"
-# MENDER_STORAGE_DEVICE = "/dev/mmcblk0"
-# MENDER_BOOT_PART = "${MENDER_STORAGE_DEVICE_BASE}1"
-# MENDER_DATA_PART = "${MENDER_STORAGE_DEVICE_BASE}4"
-# MENDER_ROOTFS_PART_A = "${MENDER_STORAGE_DEVICE_BASE}2"
-# MENDER_ROOTFS_PART_B = "${MENDER_STORAGE_DEVICE_BASE}3"
 MENDER_FEATURES_ENABLE:append = " mender-uboot mender-image-sd"
 MENDER_FEATURES_DISABLE:append = " mender-grub mender-image-uefi"
 
 PREFERRED_PROVIDER:u-boot-inf = "u-boot-fw-utils-mender-auto-provided"
 IMAGE_FSTYPES:remove = "tar.bz2 ext4 sdcard.bz2"
 
-# dummy value as the WIC plugin requires an entry but this will not be used
-# for anything beside to satisfy the build dependency
 IMAGE_BOOT_FILES:append = "u-boot-${MACHINE}.bin"
-
 MENDER_IMAGE_BOOTLOADER_FILE = "imx-boot"
 
-# offset to bootloader in number of sectors (512 bytes)
-# for imx8mm it is 33K -> 66 sectors
 MENDER_IMAGE_BOOTLOADER_BOOTSECTOR_OFFSET:imx8mm-smart = "66"
 
 do_image_sdimg[depends] += "imx-boot:do_deploy"
 
-# Storage device name
 MENDER_STORAGE_DEVICE:imx8mm-smart = "/dev/mmcblk2"
+MENDER_BOOT_PART_SIZE_MB = "64"
+MENDER_STORAGE_TOTAL_SIZE_MB = "7456"
 
-# size of the boot partition
-MENDER_BOOT_PART_SIZE_MB = "32"
+MENDER_DATA_PART_SIZE_MB = "512"
 
-# The eMMC is normally larger than 2G, but we are setting
-# the default value to 2G to limit the size of the sdimg
-# file. The data partition will be increased to fill up
-# the remaining free area at first boot
-MENDER_STORAGE_TOTAL_SIZE_MB = "6144"
+MENDER_STORAGE_DEVICE = "/dev/mmcblk2"
+
+MENDER_ROOTFS_PART_A = "/dev/mmcblk2p2"
+MENDER_ROOTFS_PART_B = "/dev/mmcblk2p3"
+MENDER_BOOT_PART = "/dev/mmcblk2p1"
+MENDER_DATA_PART = "/dev/mmcblk2p4"
+
+PREFERRED_PROVIDER_u-boot-fw-utils = "u-boot-inf-fw-utils"
