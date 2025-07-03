@@ -1,0 +1,30 @@
+--- a/influx-image-base.bb      2025-07-03 12:48:15.628683528 +0000
++++ b/influx-image-base.bb      2025-07-03 12:53:18.031683733 +0000
+@@ -51,22 +51,18 @@
+    python3-dev\
+    auditd \
+    hostapd \
+-   murata-binaries \
+-   cyw-supplicant \
+-   cyw-hostapd \
+-   hostap-conf \
+-   hostap-utils \
+-   kernel-module-nxp-wlan \
+    linux-firmware \
+    uhubctl \
++   kernel-module-nxp-wlan \
+    influx-files \
+    rexgen-stream \
+    rexgen-usb \
+ "
+-
+-#IMAGE_INSTALL:append:imx8mn-influx-rex-smart = "\
+-#   inf-resizefs \
+-#"
++#   murata-binaries 
++#   hostap-conf 
++#   hostap-utils 
++#   cyw-supplicant 
++#   cyw-hostapd 
+ 
+ inherit core-image
