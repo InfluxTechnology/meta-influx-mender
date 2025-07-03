@@ -1,4 +1,5 @@
 
+#
 # Menter setup script
 #
 # i.MX Yocto Project Build Environment Setup Script
@@ -21,6 +22,7 @@
 
 . influx-setup-release.sh $@
 
+# update bblayers.conf
 echo " " >> conf/bblayers.conf
 echo "# Mender related layers" >> conf/bblayers.conf
 #echo "BBLAYERS += \" \${BSPDIR}/sources/meta-mender-community/meta-mender-imx \"" >> conf/bblayers.conf
@@ -28,8 +30,13 @@ echo "BBLAYERS += \" \${BSPDIR}/sources/meta-mender/meta-mender-core \"" >> conf
 #echo "BBLAYERS += \" \${BSPDIR}/sources/meta-mender/meta-mender-demo \"" >> conf/bblayers.conf
 echo "BBLAYERS += \" \${BSPDIR}/sources/meta-influx-mender \"" >> conf/bblayers.conf
 
-#cat ../sources/meta-mender-community/templates/local.conf.append >> conf/local.conf
+# update conf/local.conf
 cat ../sources/meta-influx-mender/templates/local.conf.append >> conf/local.conf
+
+# update <machine>.conf
+echo " " >> ../sources/meta-influx/conf/machine/imx8mm-smart.conf
+echo 'IMAGE_BOOTLOADER = ""' >> ../sources/meta-influx/conf/machine/imx8mm-smart.conf
+echo 'IPREFERRED_PROVIDER_virtual/bootloader = "u-boot-fake"' >> ../sources/meta-influx/conf/machine/imx8mm-smart.conf
 
 cp ../sources/meta-influx-mender/scripts/deploy-image.sh ./
 
