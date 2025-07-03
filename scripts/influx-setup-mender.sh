@@ -22,8 +22,11 @@
 
 . influx-setup-release.sh $@
 
-# update bblayers.conf
+# murata wlan support is under construction
 patch -Np1 -r - conf/bblayers.conf < ../sources/meta-influx-mender/templates/bblayers.patch
+patch -Np1 -r - sources/meta-influx/recipes-influx/images/influx-image-base.bb < ../sources/meta-influx-mender/templates/influx-image-base.patch
+
+# update bblayers.conf
 echo " " >> conf/bblayers.conf
 echo "# Mender related layers" >> conf/bblayers.conf
 #echo "BBLAYERS += \" \${BSPDIR}/sources/meta-mender-community/meta-mender-imx \"" >> conf/bblayers.conf
