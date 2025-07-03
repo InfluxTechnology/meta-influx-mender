@@ -23,6 +23,7 @@
 . influx-setup-release.sh $@
 
 # update bblayers.conf
+patch -Np1 -r - conf/bblayers.conf < ../sources/meta-influx-mender/templates/bblayers.patch
 echo " " >> conf/bblayers.conf
 echo "# Mender related layers" >> conf/bblayers.conf
 #echo "BBLAYERS += \" \${BSPDIR}/sources/meta-mender-community/meta-mender-imx \"" >> conf/bblayers.conf
