@@ -20,8 +20,9 @@ MENDER_TENANT_TOKEN = "eyJhbGciOiJSUzI1NiIsImtpZCI6MCwidHlwIjoiSldUIn0.eyJqdGkiO
 #FILESEXTRAPATHS:prepend:pn-mender := "<DIRECTORY-CONTAINING-server.crt>:"
 #SRC_URI:append:pn-mender = " file://server.crt"
 
-MENDER_FEATURES_ENABLE:append = " mender-uboot mender-image-sd"
-MENDER_FEATURES_DISABLE:append = " mender-grub mender-image-uefi"
+MENDER_FEATURES_DISABLE:append = " mender-bios mender-grub mender-image-bios imender-image-gpt mender-image-ubi"
+MENDER_FEATURES_DISABLE:append = " mender-image-uefi mender-partuuid mender-ubi mender-uboot"
+MENDER_FEATURES_ENABLE:append = " mender-growfs-data mender-image mender-image-sd mender-systemd mender-persist-systemd-machine-id"
 
 PREFERRED_PROVIDER:u-boot-inf = "u-boot-fw-utils-mender-auto-provided"
 IMAGE_FSTYPES:remove = "tar.bz2 ext4 sdcard.bz2"
