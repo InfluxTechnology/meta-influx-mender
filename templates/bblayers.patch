@@ -1,8 +1,0 @@
---- conf/bblayers.conf  2025-07-03 11:17:04.235153688 +0000
-+++ conf/bblayers.conf  2025-07-03 11:17:57.072479779 +0000
-@@ -35,4 +35,4 @@
- BBLAYERS += "${BSPDIR}/sources/meta-virtualization"
- #Influx Technology Yocto layer
- BBLAYERS += " ${BSPDIR}/sources/meta-influx "
--BBLAYERS += " ${BSPDIR}/sources/meta-murata-wireless "
-+#BBLAYERS += " ${BSPDIR}/sources/meta-murata-wireless "
