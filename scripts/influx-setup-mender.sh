@@ -38,6 +38,7 @@ echo " " >> ../sources/meta-influx/conf/machine/imx8mm-smart.conf
 echo 'IMAGE_BOOTLOADER = ""' >> ../sources/meta-influx/conf/machine/imx8mm-smart.conf
 echo 'IPREFERRED_PROVIDER_virtual/bootloader = "u-boot-fake"' >> ../sources/meta-influx/conf/machine/imx8mm-smart.conf
 
+mv ../sources/meta-influx-mender/templates/imx-boot-redge-sd.bin conf/
 mv ../sources/meta-influx-mender/recipes-bsp/u-boot-fake/ ../sources/meta-influx/recipes-bsp/
 cp ../sources/meta-influx-mender/scripts/deploy-image.sh ./
 
