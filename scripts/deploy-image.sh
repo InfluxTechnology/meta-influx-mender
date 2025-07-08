@@ -22,7 +22,7 @@ fi
 
 echo "Copying deploying files ..."
 
-cp "$TMP_DIR"/imx-boot-"$MACHINE"-sd.bin-flash_evk "$UUU_FILES_DIR"/imx-boot-redge-sd.bin
+cp "$CURR_DIR"/conf/imx-boot-redge-sd.bin "$UUU_FILES_DIR"/imx-boot-redge-sd.bin
 cp "$TMP_DIR"/imx8mm-influx-rex-smart_v2.dtb "$UUU_FILES_DIR"/
 cp "$TMP_DIR"/"$BUILD"-"$MACHINE".sdimg "$UUU_FILES_DIR""$MACHINE".sdimg
 
