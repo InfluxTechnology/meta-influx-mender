@@ -1,6 +1,9 @@
 
 # Mender update support
 
+WKS_FILE:remove = "influx-image-base.wks.in" 
+IMAGE_FSTYPES:remove = "wic"
+
 INHERIT += "rm_work"
 INHERIT += "mender-full"
 
