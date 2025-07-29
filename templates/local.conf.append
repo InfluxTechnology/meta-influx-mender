@@ -12,7 +12,7 @@ DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
 VIRTUAL-RUNTIME_initscripts = ""
 
 MENDER_SERVER_URL = "https://hosted.mender.io"
-MENDER_TENANT_TOKEN = "eyJhbGciOiJSUzI1NiIsImtpZCI6MCwidHlwIjoiSldUIn0.eyJqdGkiOiJiYWZkODFjZC1jN2NkLTQxY2ItOTU3Yi01ZGYzZTZhYjBiMGYiLCJzdWIiOiI1MmEyMmUyZS03OGQzLTQ2MmItYjkzYy1mZDc1YmVmOTE4ZWMiLCJleHAiOjE3NTEyNjQzMTcsImlhdCI6MTc1MDY1OTUxNywibWVuZGVyLnRlbmFudCI6IjY4NTAyNmI3MTFlYjhjODM1OGZlYjIxMSIsIm1lbmRlci51c2VyIjp0cnVlLCJpc3MiOiJldS5ob3N0ZWQubWVuZGVyLmlvIiwic2NwIjoibWVuZGVyLioiLCJtZW5kZXIucGxhbiI6ImVudGVycHJpc2UiLCJtZW5kZXIudHJpYWwiOnRydWUsIm1lbmRlci5hZGRvbnMiOlt7Im5hbWUiOiJjb25maWd1cmUiLCJlbmFibGVkIjp0cnVlfSx7Im5hbWUiOiJ0cm91Ymxlc2hvb3QiLCJlbmFibGVkIjp0cnVlfSx7Im5hbWUiOiJtb25pdG9yIiwiZW5hYmxlZCI6dHJ1ZX1dLCJuYmYiOjE3NTA2NTk1MTd9.KtRbpBA53LWUokcOzxKHuyz042O2UBCLF454ZMmEVUIhe0OFgmC2GwdW8F7KalPgFg0R6_sAE0qJv3RJavirutQgMQ9K9LXt36OySV_6EZ0qbxem0BygRpa4lrxOO7dQuq727pj2ovQNNULTBm7xifO1SmAgsza8yCCR4gyWMbzsziFCEniiaUpD7z2GMx-nDQsxixJLX7Ts3pmOo-4nLCg6c9lCtUG7hnyI95mY0rYW23WKVkCUnURyMrNvkwo0hHEaoLZzj-rffGYFDkh8dFQqgMonr-F_onPomzkXWiqf3qc8lSI6fFgBD0hGSrSnZaJbfn93dJ4tX-eAcD01o2OkRseB8iiu6nQEWZD55g8r6wSIIHT8nZkKSqL6RIQZa6e5npZGckAxMNY7Mk1utb28EXo6hSujJGAEWFJeLgrbv1vccZzCK1qaOQf53xW8ZGWnhV99eAR4DezJKkiyS6JvFe94dUmvIEokSXwnVUfF7fhv4NjqoRuhnAHxmlpm"
+MENDER_TENANT_TOKEN = "7GZfOuuC4Yba8xG9SPMS0T0LMic8vyrZJiS1ED4Ahiw"
 
 #MENDER_DEMO_HOST_IP_ADDRESS = "192.168.0.100"
 
@@ -21,10 +21,11 @@ MENDER_TENANT_TOKEN = "eyJhbGciOiJSUzI1NiIsImtpZCI6MCwidHlwIjoiSldUIn0.eyJqdGkiO
 #SRC_URI:append:pn-mender = " file://server.crt"
 
 MENDER_FEATURES_DISABLE:append = " mender-bios mender-grub mender-image-bios imender-image-gpt mender-image-ubi"
-MENDER_FEATURES_DISABLE:append = " mender-image-uefi mender-partuuid mender-ubi mender-uboot"
-MENDER_FEATURES_ENABLE:append = " mender-growfs-data mender-image mender-image-sd mender-systemd mender-persist-systemd-machine-id"
+MENDER_FEATURES_DISABLE:append = " mender-image-uefi mender-partuuid mender-ubi "
+MENDER_FEATURES_ENABLE:append = " mender-uboot mender-growfs-data mender-image mender-image-sd mender-systemd mender-persist-systemd-machine-id"
 
 PREFERRED_PROVIDER:u-boot-inf = "u-boot-fw-utils-mender-auto-provided"
+PREFERRED_PROVIDER_u-boot-fw-utils = "u-boot-inf-fw-utils"
 IMAGE_FSTYPES:remove = "tar.bz2 ext4 sdcard.bz2"
 
 IMAGE_BOOT_FILES:append = "u-boot-${MACHINE}.bin"
@@ -35,16 +36,14 @@ MENDER_IMAGE_BOOTLOADER_BOOTSECTOR_OFFSET:imx8mm-smart = "66"
 do_image_sdimg[depends] += "imx-boot:do_deploy"
 
 MENDER_STORAGE_DEVICE:imx8mm-smart = "/dev/mmcblk2"
-MENDER_BOOT_PART_SIZE_MB = "64"
-MENDER_STORAGE_TOTAL_SIZE_MB = "7456"
 
-MENDER_DATA_PART_SIZE_MB = "512"
+MENDER_BOOT_PART_SIZE_MB:imx8mm-smart = "64"
+MENDER_BOOT_PART:imx8mm-smart = "/dev/mmcblk2p1"
 
-MENDER_STORAGE_DEVICE = "/dev/mmcblk2"
+MENDER_DATA_PART_SIZE_MB:imx8mm-smart = "1024"
+MENDER_DATA_PART:imx8mm-smart = "/dev/mmcblk2p4"
 
-MENDER_ROOTFS_PART_A = "/dev/mmcblk2p2"
-MENDER_ROOTFS_PART_B = "/dev/mmcblk2p3"
-MENDER_BOOT_PART = "/dev/mmcblk2p1"
-MENDER_DATA_PART = "/dev/mmcblk2p4"
+MENDER_STORAGE_TOTAL_SIZE_MB:imx8mm-smart = "7456"
+MENDER_ROOTFS_PART_A:imx8mm-smart = "/dev/mmcblk2p2"
+MENDER_ROOTFS_PART_B:imx8mm-smart = "/dev/mmcblk2p3"
 
-PREFERRED_PROVIDER_u-boot-fw-utils = "u-boot-inf-fw-utils"

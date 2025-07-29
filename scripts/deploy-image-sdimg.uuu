@@ -1,8 +1,8 @@
 uuu_version 1.2.39
 
-SDP: boot -f files/imx-boot-redge-sd.bin
+SDP: boot -f files/u-boot-imx8mm-smart.bin
 # This command will be run when use SPL
-SDPV: write -f files/imx-boot-redge-sd.bin -offset 0x57c00
+SDPV: write -f files/u-boot-imx8mm-smart.bin -offset 0x57c00
 SDPV: jump
 
 FB: ucmd setenv bootdelay 0
@@ -17,6 +17,6 @@ FB: ucmd setenv fastboot_dev mmc
 FB: ucmd setenv mmcdev ${emmc_dev}
 FB: ucmd mmc dev ${emmc_dev}
 FB: flash -raw2sparse all files/imx8mm-smart.sdimg
-FB: flash bootloader files/imx-boot-redge-sd.bin
+FB: flash bootloader files/u-boot-imx8mm-smart.bin
 FB: ucmd mmc partconf ${emmc_dev} 1 1 0
 FB: done
