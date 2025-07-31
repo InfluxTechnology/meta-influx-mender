@@ -1,6 +1,8 @@
 
 # Mender update support
 
+CORE_IMAGE_EXTRA_INSTALL += " lvm2 "
+
 WKS_FILE:remove = "influx-image-base.wks.in" 
 IMAGE_FSTYPES:remove = "wic"
 
