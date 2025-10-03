@@ -5,18 +5,25 @@ SDP: boot -f files/u-boot-imx8mm-smart.bin
 SDPV: write -f files/u-boot-imx8mm-smart.bin -offset 0x57c00
 SDPV: jump
 
-FB: ucmd setenv bootdelay 0
-FB: ucmd setenv extra_bootargs quiet
-FB: ucmd setenv bootcmd 'mmc dev ${mmcdev};if run loadimage; then run mmcboot; fi;'
-FB: ucmd setenv args_from_script quiet
-FB: ucmd setenv fdt_file "imx8mm-influx-rex-smart_v2.dtb"
-FB: ucmd saveenv
+# This command will be run when ROM support stream mode
+SDPS: boot -f files/u-boot-imx8mm-smart.bin
 
 # Flash file systems and then the bootloader
 FB: ucmd setenv fastboot_dev mmc
 FB: ucmd setenv mmcdev ${emmc_dev}
 FB: ucmd mmc dev ${emmc_dev}
 FB: flash -raw2sparse all files/imx8mm-smart.sdimg
-FB: flash bootloader files/u-boot-imx8mm-smart.bin
-FB: ucmd mmc partconf ${emmc_dev} 1 1 0
+FB: ucmd mmc partconf ${emmc_dev} 1 7 0
+
+FB: ucmd setenv bootdelay 0
+FB: ucmd setenv extra_bootargs quiet
+FB: ucmd setenv args_from_script quiet
+
+FB: ucmd setenv bootcmd 'mmc dev ${mmcdev}; if mmc rescan; then run mender_setup; if run loadimage; then run mmcboot; run mender_try_to_recover; else run mender_try_to_recover; run netboot; fi; else booti ${loadaddr} - ${fdt_addr}; fi'
+#FB: ucmd setenv bootlimit 1
+#FB: ucmd setenv bootcount 1
+
+FB: ucmd saveenv
+
 FB: done
+
