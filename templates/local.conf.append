@@ -1,5 +1,8 @@
 
 # Mender update support
+WKS_FILE:remove = "influx-image-base.wks.in" 
+IMAGE_FSTYPES:remove = "wic"
+
 PREFERRED_PROVIDER_mender = "mender"
 PREFERRED_VERSION_mender = "4.0.7"
 IMAGE_INSTALL:append = "mender-artifact-info"
