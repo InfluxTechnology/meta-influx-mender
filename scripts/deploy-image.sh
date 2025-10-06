@@ -11,12 +11,12 @@ fi
 BUILD="influx-image-base"
 MACHINE=$(sudo cat $CURR_DIR/conf/local.conf | grep 'MACHINE' |  grep -v 'IMAGE_BOOT_FILES' | sed "s/'//g" | sed "s/ //g" | awk -F '??=' '{print $2}')
 
-TMP_DIR=$CURR_DIR"/tmp/deploy/images/""$MACHINE
+TMP_DIR=$CURR_DIR"/tmp/deploy/images/""$MACHINE"
 UUU_DIR=$PWD"/uuu-deploy/"
 UUU_FILES_DIR=$PWD"/uuu-deploy/files/"
 if [[ ! -d $UUU_FILES_DIR ]]; then
     mkdir -p $UUU_FILES_DIR
-    cp ../sources/meta-influx/conf/deploy/deploy-image-wic.uuu $UUU_DIR/
+    cp ../sources/meta-influx-mender/scripts/deploy-image-sdimg.uuu $UUU_DIR/
     cp ../sources/meta-influx/conf/deploy/uuu* $UUU_DIR/
 fi
 
