@@ -1,0 +1,8 @@
+#!/bin/sh
+
+FILES=$(cat /data/mender/preserved-files | grep -v '#' )
+tar -czf /data/mender/preserved-files.tgz $FILES 
+
+#echo "DownloadEnter:  ""$(date)" > /data/mender/update.log
+
+exit 0

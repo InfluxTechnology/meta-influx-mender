@@ -39,6 +39,8 @@ echo 'IMAGE_BOOTLOADER = ""' >> ../sources/meta-influx/conf/machine/imx8mm-smart
 cp ../sources/meta-influx-mender/scripts/deploy-image.sh ./
 rm ../sources/meta-influx/recipes-core/base-files/files/fstab
 
+patch -Np1 -r - ../sources/meta-influx/recipes-bsp/u-boot/u-boot-inf-fw-utils_2024.04.bb < ../sources/meta-influx-mender/templates/u-boot-inf-fw-utils.patch
+
 echo ""
 echo "Mender integration complete."
 echo ""
