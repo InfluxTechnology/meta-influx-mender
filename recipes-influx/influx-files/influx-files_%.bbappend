@@ -13,15 +13,15 @@ SRC_URI:append = "\
 
 do_install:append() {
     if [ ! -d ${D}/opt/influx/ ]; then
-    mkdir -p ${D}/opt/influx/
+        mkdir -p ${D}/opt/influx/
     fi
 
     if [ ! -d ${D}/etc/mender/scripts/ ]; then
-    mkdir -p ${D}/etc/mender/scripts/
+        mkdir -p ${D}/etc/mender/scripts/
     fi
 
     if [ ! -d ${D}/data/mender/ ]; then
-    mkdir -p ${D}/data/mender/
+        mkdir -p ${D}/data/mender/
     fi
 
     install -m 0755 ${WORKDIR}/Download_Enter_00 ${D}/etc/mender/scripts/Download_Enter_00
