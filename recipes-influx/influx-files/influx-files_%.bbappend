@@ -3,12 +3,12 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 SRC_URI:prepend = "\
     file://Download_Enter_00 \
     file://Download_Leave_00 \
-    file://preserved-files \
     file://release_check.sh \
 "
 
 SRC_URI:append = "\
     file://autostart.patch \
+    file://preserved-files \
 "
 
 do_install:append() {
