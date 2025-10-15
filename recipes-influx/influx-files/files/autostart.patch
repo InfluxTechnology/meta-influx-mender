@@ -1,8 +1,7 @@
---- a/opt/influx/autostart.sh  2025-10-07 08:31:05.570329462 +0000
-+++ b/opt/influx/autostart.sh  2025-10-07 14:03:50.983223606 +0000
-@@ -4,6 +4,16 @@
- # execute at first time
- /etc/profile.d/enable_services.sh
+--- a/opt/influx/autostart.sh	2025-10-15 07:52:51.732887090 +0000
++++ b/opt/influx/autostart.sh	2025-10-15 07:54:12.687040787 +0000
+@@ -1,5 +1,15 @@
+ #!/bin/sh
  
 +# Mender image update need this
 +# remove/add this crontab jobs
@@ -16,4 +15,13 @@
 +
  # Power up the Quectel chip
  /opt/influx/cellular_module_start.sh
+ 
+@@ -7,8 +17,6 @@
+ #/opt/influx/lte_start_wvdial.sh
+ #/opt/influx/start_ppp0.sh
+ 
+-echo 0 > /sys/block/mmcblk2boot0/force_ro
+-
+ systemctl stop serial-getty@ttymxc1.service
+ systemctl disable serial-getty@ttymxc1.service
  
