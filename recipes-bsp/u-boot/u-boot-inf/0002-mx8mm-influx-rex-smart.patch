@@ -1,0 +1,58 @@
+--- a/include/configs/mx8mm-influx-rex-smart.h	2025-07-17 06:09:06.508924529 +0000
++++ b/include/configs/mx8mm-influx-rex-smart.h	2025-07-17 06:30:18.479055330 +0000
+@@ -73,14 +73,14 @@
+ 	"kernel_addr_r=" __stringify(CONFIG_SYS_LOAD_ADDR) "\0" \
+ 	M_CORE_ENV \
+ 	"bsp_script=boot.scr\0" \
+-	"image=Image\0" \
++	"image=boot/Image\0" \
+ 	"splashimage=0x50000000\0" \
+ 	"console=ttymxc1,115200\0" \
+ 	"fdt_addr_r=0x43000000\0"		\
+ 	"fdt_addr=0x43000000\0"			\
+ 	"fdt_high=0xffffffffffffffff\0"		\
+ 	"boot_fdt=try\0" \
+-	"fdt_file=\0" \
++	"fdt_file=boot/imx8mm-influx-rex-smart_v2-1mw.dtb\0" \
+ 	"bootm_size=0x10000000\0" \
+ 	"initrd_addr=0x43800000\0"		\
+ 	"initrd_high=0xffffffffffffffff\0" \
+@@ -88,13 +88,13 @@
+ 	"mmcpart=1\0" \
+ 	"mmcroot=" CFG_MMCROOT " rootwait rw\0" \
+ 	"mmcautodetect=yes\0" \
+-	"mmcargs=setenv bootargs ${jh_clk} console=${console} root=${mmcroot} " \
++	"mmcargs=setenv bootargs ${jh_clk} console=${console} root=${mender_kernel_root} " \
+ 		"${args_from_script}\0" \
+ 	"loadbootscript=fatload mmc ${mmcdev}:${mmcpart} ${loadaddr} ${bsp_script};\0" \
+ 	"bootscript=echo Running bootscript from mmc ...; " \
+ 		"source\0" \
+-	"loadimage=fatload mmc ${mmcdev}:${mmcpart} ${loadaddr} ${image}\0" \
+-	"loadfdt=fatload mmc ${mmcdev}:${mmcpart} ${fdt_addr_r} ${fdt_file}\0" \
++	"loadimage=ext4load ${mender_uboot_root} ${loadaddr} ${image}\0" \
++	"loadfdt=ext4load ${mender_uboot_root} ${fdt_addr} ${fdt_file}\0" \
+ 	"mmcboot=echo Booting from mmc ...; " \
+ 		"run mmcargs; " \
+ 		"if test ${boot_fdt} = yes || test ${boot_fdt} = try; then " \
+@@ -129,13 +129,14 @@
+ 		"fi;\0" \
+ 	"bsp_bootcmd=echo Running BSP bootcmd ...;" \
+ 		"mmc dev ${mmcdev}; if mmc rescan; then " \
+-		   "if run loadbootscript; then " \
+-			   "run bootscript; " \
+-		   "else " \
+-			   "if run loadimage; then " \
+-				   "run mmcboot; " \
+-			   "else run netboot; " \
+-			   "fi; " \
++			"run mender_setup; " \
++			"if run loadimage; then " \
++				"run mmcboot; " \
++				"run mender_try_to_recover; " \
++			"else " \
++				"run mender_try_to_recover; " \
++				"run netboot; " \
++			"fi; " \
+ 		   "fi; " \
+ 	   "fi;"
+ 

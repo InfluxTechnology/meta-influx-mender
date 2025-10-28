@@ -4,7 +4,7 @@ WKS_FILE:remove = "influx-image-base.wks.in"
 IMAGE_FSTYPES:remove = "wic"
 
 PREFERRED_PROVIDER_mender = "mender"
-#PREFERRED_VERSION_mender = "4.0.7"
+PREFERRED_VERSION_mender = "4.0.7"
 IMAGE_INSTALL:append = "mender-artifact-info"
 
 CORE_IMAGE_EXTRA_INSTALL += " lvm2 "
@@ -12,6 +12,7 @@ CORE_IMAGE_EXTRA_INSTALL += " lvm2 "
 INHERIT += "rm_work"
 INHERIT += "mender-full"
 
+INFLUX_RELEASE="pro.1.2.4"
 ARTIFACT_TYPE="image"
 MENDER_ARTIFACT_NAME = "${ARTIFACT_TYPE}_${INFLUX_RELEASE}"
 
@@ -23,13 +24,15 @@ VIRTUAL-RUNTIME_initscripts = ""
 MENDER_SERVER_URL = "https://hosted.mender.io"
 MENDER_TENANT_TOKEN = "7GZfOuuC4Yba8xG9SPMS0T0LMic8vyrZJiS1ED4Ahiw"
 
+#MENDER_DEMO_HOST_IP_ADDRESS = "192.168.0.100"
+
 #MENDER_SERVER_URL = "https://docker.mender.io"
 #FILESEXTRAPATHS:prepend:pn-mender := "<DIRECTORY-CONTAINING-server.crt>:"
 #SRC_URI:append:pn-mender = " file://server.crt"
 
 MENDER_FEATURES_DISABLE:append = " mender-bios mender-grub mender-image-bios imender-image-gpt mender-image-ubi"
-MENDER_FEATURES_DISABLE:append = " mender-image-uefi mender-partuuid mender-ubi "
-MENDER_FEATURES_ENABLE:append = "  mender-uboot mender-growfs-data mender-image mender-image-sd mender-systemd mender-persist-systemd-machine-id"
+MENDER_FEATURES_DISABLE:append = " mender-image-uefi mender-partuuid mender-ubi mender-uboot"
+MENDER_FEATURES_ENABLE:append = "  mender-growfs-data mender-image mender-image-sd mender-systemd mender-persist-systemd-machine-id"
 
 PREFERRED_PROVIDER:u-boot-inf = "u-boot-fw-utils-mender-auto-provided"
 IMAGE_FSTYPES:remove = "tar.bz2 ext4 sdcard.bz2"
@@ -46,7 +49,7 @@ MENDER_STORAGE_DEVICE:imx8mm-smart = "/dev/mmcblk2"
 MENDER_BOOT_PART_SIZE_MB:imx8mm-smart = "64"
 MENDER_BOOT_PART:imx8mm-smart = "/dev/mmcblk2p1"
 
-MENDER_DATA_PART_SIZE_MB:imx8mm-smart = "4096"
+MENDER_DATA_PART_SIZE_MB:imx8mm-smart = "1024"
 MENDER_DATA_PART:imx8mm-smart = "/dev/mmcblk2p4"
 
 MENDER_STORAGE_TOTAL_SIZE_MB:imx8mm-smart = "7456"
@@ -54,5 +57,5 @@ MENDER_ROOTFS_PART_A:imx8mm-smart = "/dev/mmcblk2p2"
 MENDER_ROOTFS_PART_B:imx8mm-smart = "/dev/mmcblk2p3"
 
 
-PREFERRED_PROVIDER_u-boot-fw-utils = "u-boot-fw-utils-mender-auto-provided"
+PREFERRED_PROVIDER_u-boot-fw-utils = "u-boot-inf-fw-utils"
 
