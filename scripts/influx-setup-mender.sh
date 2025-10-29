@@ -26,7 +26,6 @@
 echo " " >> conf/bblayers.conf
 echo "# Mender related layers" >> conf/bblayers.conf
 echo "BBLAYERS += \" \${BSPDIR}/sources/meta-mender/meta-mender-core \"" >> conf/bblayers.conf
-#echo "BBLAYERS += \" \${BSPDIR}/sources/meta-mender/meta-mender-demo \"" >> conf/bblayers.conf
 echo "BBLAYERS += \" \${BSPDIR}/sources/meta-influx-mender \"" >> conf/bblayers.conf
 
 # update conf/local.conf
@@ -36,10 +35,11 @@ cat ../sources/meta-influx-mender/templates/local.conf.append >> conf/local.conf
 echo " " >> ../sources/meta-influx/conf/machine/imx8mm-smart.conf
 echo 'IMAGE_BOOTLOADER = ""' >> ../sources/meta-influx/conf/machine/imx8mm-smart.conf
 
+cp Release-notes ..sources/meta-influx/recipes-influx/influx-files/influx-files/opt/influx/
 cp ../sources/meta-influx-mender/scripts/deploy-image.sh ./
 rm ../sources/meta-influx/recipes-core/base-files/files/fstab
 
-patch -Np1 -r - ../sources/meta-influx/recipes-bsp/u-boot/u-boot-inf-fw-utils_2024.04.bb < ../sources/meta-influx-mender/templates/u-boot-inf-fw-utils.patch
+
 
 echo ""
 echo "Mender integration complete."
