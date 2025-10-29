@@ -35,7 +35,7 @@ cat ../sources/meta-influx-mender/templates/local.conf.append >> conf/local.conf
 echo " " >> ../sources/meta-influx/conf/machine/imx8mm-smart.conf
 echo 'IMAGE_BOOTLOADER = ""' >> ../sources/meta-influx/conf/machine/imx8mm-smart.conf
 
-cp Release-notes ..sources/meta-influx/recipes-influx/influx-files/influx-files/opt/influx/
+cp ../sources/meta-influx-mender/Release-notes ../sources/meta-influx/recipes-influx/influx-files/influx-files/opt/influx/
 cp ../sources/meta-influx-mender/scripts/deploy-image.sh ./
 
 echo ""
