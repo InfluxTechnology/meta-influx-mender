@@ -37,9 +37,6 @@ echo 'IMAGE_BOOTLOADER = ""' >> ../sources/meta-influx/conf/machine/imx8mm-smart
 
 cp Release-notes ..sources/meta-influx/recipes-influx/influx-files/influx-files/opt/influx/
 cp ../sources/meta-influx-mender/scripts/deploy-image.sh ./
-rm ../sources/meta-influx/recipes-core/base-files/files/fstab
-
-
 
 echo ""
 echo "Mender integration complete."
