@@ -19,9 +19,7 @@ FB: ucmd setenv bootdelay 0
 FB: ucmd setenv extra_bootargs quiet
 FB: ucmd setenv args_from_script quiet
 
-FB: ucmd setenv bootcmd 'mmc dev ${mmcdev}; if mmc rescan; then run mender_setup; if run loadimage; then run mmcboot; run mender_try_to_recover; else run mender_try_to_recover; run netboot; fi; else booti ${loadaddr} - ${fdt_addr}; fi'
-#FB: ucmd setenv bootlimit 1
-#FB: ucmd setenv bootcount 1
+#FB: ucmd setenv bootcmd 'mmc dev ${mmcdev}; if mmc rescan; then run mender_setup; if run loadimage; then run mmcboot; run mender_try_to_recover; else run mender_try_to_recover; run netboot; fi; else booti ${loadaddr} - ${fdt_addr}; fi'
 
 FB: ucmd saveenv
 
