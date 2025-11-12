@@ -1,0 +1,15 @@
+--- a/opt/influx/autostart.sh	2025-11-10 16:58:25.541190655 +0200
++++ b/opt/influx/autostart.sh	2025-11-11 17:06:54.160606901 +0200
+@@ -9,6 +9,12 @@
+     tar -xzf /data/mender/preserved-files.tgz -C /
+     mv /data/mender/preserved-files.tgz /data/mender/preserved-files_old.tgz
+ fi
++#
++# Avoiding the sleep during OTA update 
++INF_UPG=$(/usr/sbin/fw_printenv influx_upgrade | cut -d = -f 2)
++if [ $INF_UPG == "1" ]; then
++	/usr/bin/systemctl start end_influx_upgrade.service
++fi
+ 
+ # Power up the Quectel chip
+ /opt/influx/cellular_module_start.sh

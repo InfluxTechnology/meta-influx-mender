@@ -1,0 +1,27 @@
+--- a/opt/influx/autostart.sh	2025-10-15 07:52:51.732887090 +0000
++++ b/opt/influx/autostart.sh	2025-10-15 07:54:12.687040787 +0000
+@@ -1,5 +1,15 @@
+ #!/bin/sh
+ 
++# Mender image update need this
++# remove/add this crontab jobs
++/usr/bin/crontab -u root -l |  grep -v "* /opt/influx/release_check.sh" |  /usr/bin/crontab -
++#
++# extract preserved files
++if test -f /data/mender/preserved-files.tgz; then
++    tar -xzf /data/mender/preserved-files.tgz -C /
++    mv /data/mender/preserved-files.tgz /data/mender/preserved-files_old.tgz
++fi
++
+ # Power up the Quectel chip
+ /opt/influx/cellular_module_start.sh
+ 
+@@ -7,8 +17,6 @@
+ #/opt/influx/lte_start_wvdial.sh
+ #/opt/influx/start_ppp0.sh
+ 
+-echo 0 > /sys/block/mmcblk2boot0/force_ro
+-
+ systemctl stop serial-getty@ttymxc1.service
+ systemctl disable serial-getty@ttymxc1.service
+ 

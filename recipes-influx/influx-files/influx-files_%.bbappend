@@ -7,7 +7,8 @@ SRC_URI:prepend = "\
 "
 
 SRC_URI:append = "\
-    file://autostart.patch \
+    file://0001-autostart.patch \
+    file://0002-autostart.patch \
     file://preserved-files \
 "
 
