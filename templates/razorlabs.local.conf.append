@@ -4,7 +4,6 @@ WKS_FILE:remove = "influx-image-base.wks.in"
 IMAGE_FSTYPES:remove = "wic"
 
 PREFERRED_PROVIDER_mender = "mender"
-#PREFERRED_VERSION_mender = "4.0.7"
 IMAGE_INSTALL:append = "mender-artifact-info"
 
 CORE_IMAGE_EXTRA_INSTALL += " lvm2 "
@@ -23,10 +22,6 @@ VIRTUAL-RUNTIME_initscripts = ""
 # RasozLabs account
 MENDER_SERVER_URL = "https://eu.hosted.mender.io"
 MENDER_TENANT_TOKEN = "aQDGn5RY503YvEUOr2j3SnZIWts107yNJDkt-V1KgDI"
-
-#MENDER_SERVER_URL = "https://docker.mender.io"
-#FILESEXTRAPATHS:prepend:pn-mender := "<DIRECTORY-CONTAINING-server.crt>:"
-#SRC_URI:append:pn-mender = " file://server.crt"
 
 MENDER_FEATURES_DISABLE:append = " mender-bios mender-grub mender-image-bios imender-image-gpt mender-image-ubi"
 MENDER_FEATURES_DISABLE:append = " mender-image-uefi mender-partuuid mender-ubi "
