@@ -1,0 +1,15 @@
+--- a/support/modules/rootfs-image	2025-09-03 12:10:06.658625029 +0000
++++ b/support/modules/rootfs-image_	2025-09-03 12:17:36.990355578 +0000
+@@ -240,9 +240,9 @@
+ 
+     ArtifactVerifyReboot)
+         check_requirements
+-        if test "$upgrade_available" != 1; then
+-            exit 1
+-        fi
++#        if test "$upgrade_available" != 1; then
++#            exit 1
++#        fi
+         check_device_matches_root "$active"
+         ;;
+ 

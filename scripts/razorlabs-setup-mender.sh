@@ -1,4 +1,3 @@
-
 #
 # Menter setup script
 #
@@ -30,7 +29,7 @@ echo "BBLAYERS += \" \${BSPDIR}/sources/meta-mender/meta-mender-core \"" >> conf
 echo "BBLAYERS += \" \${BSPDIR}/sources/meta-influx-mender \"" >> conf/bblayers.conf
 
 # update conf/local.conf
-cat ../sources/meta-influx-mender/templates/local.conf.append >> conf/local.conf
+cat ../sources/meta-influx-mender/templates/razorlabs.local.conf.append >> conf/local.conf
 
 # update <machine>.conf
 echo " " >> ../sources/meta-influx/conf/machine/imx8mm-smart.conf
@@ -44,4 +43,3 @@ patch -Np1 -r - ../sources/meta-influx/recipes-bsp/u-boot/u-boot-inf-fw-utils_20
 echo ""
 echo "Mender integration complete."
 echo ""
-

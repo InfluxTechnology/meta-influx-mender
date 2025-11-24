@@ -4,7 +4,6 @@ WKS_FILE:remove = "influx-image-base.wks.in"
 IMAGE_FSTYPES:remove = "wic"
 
 PREFERRED_PROVIDER_mender = "mender"
-#PREFERRED_VERSION_mender = "4.0.7"
 IMAGE_INSTALL:append = "mender-artifact-info"
 
 CORE_IMAGE_EXTRA_INSTALL += " lvm2 "
@@ -20,12 +19,9 @@ VIRTUAL-RUNTIME_init_manager = "systemd"
 DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
 VIRTUAL-RUNTIME_initscripts = ""
 
-MENDER_SERVER_URL = "https://hosted.mender.io"
-MENDER_TENANT_TOKEN = "7GZfOuuC4Yba8xG9SPMS0T0LMic8vyrZJiS1ED4Ahiw"
-
-#MENDER_SERVER_URL = "https://docker.mender.io"
-#FILESEXTRAPATHS:prepend:pn-mender := "<DIRECTORY-CONTAINING-server.crt>:"
-#SRC_URI:append:pn-mender = " file://server.crt"
+# RasozLabs account
+MENDER_SERVER_URL = "https://eu.hosted.mender.io"
+MENDER_TENANT_TOKEN = "aQDGn5RY503YvEUOr2j3SnZIWts107yNJDkt-V1KgDI"
 
 MENDER_FEATURES_DISABLE:append = " mender-bios mender-grub mender-image-bios imender-image-gpt mender-image-ubi"
 MENDER_FEATURES_DISABLE:append = " mender-image-uefi mender-partuuid mender-ubi "
@@ -55,4 +51,3 @@ MENDER_ROOTFS_PART_B:imx8mm-smart = "/dev/mmcblk2p3"
 
 
 PREFERRED_PROVIDER_u-boot-fw-utils = "u-boot-fw-utils-mender-auto-provided"
-
