@@ -3,4 +3,6 @@
 FILES=$(cat /data/mender/preserved-files | grep -v '#' )
 tar -czf /data/mender/preserved-files.tgz $FILES 
 
+/usr/sbin/fw_setenv influx_upgrade 1
+
 exit 0
