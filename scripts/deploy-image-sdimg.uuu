@@ -19,7 +19,11 @@ FB: ucmd setenv bootdelay 0
 FB: ucmd setenv extra_bootargs quiet
 FB: ucmd setenv args_from_script quiet
 
-#FB: ucmd setenv bootcmd 'mmc dev ${mmcdev}; if mmc rescan; then run mender_setup; if run loadimage; then run mmcboot; run mender_try_to_recover; else run mender_try_to_recover; run netboot; fi; else booti ${loadaddr} - ${fdt_addr}; fi'
+# Type here your mender and local WIFI settings
+FB: ucmd setenv local_mender_server 'https://eu.hosted.mender.io'
+FB: ucmd setenv local_mender_token '7L4tjYsIn2jRsev2bofJkqCBryBP8EtpQZlwBD-9RxQ'
+FB: ucmd setenv local_wifi_ssid ''
+FB: ucmd setenv local_wifi_psk ''
 
 FB: ucmd saveenv
 
