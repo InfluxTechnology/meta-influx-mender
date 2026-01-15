@@ -1,5 +1,11 @@
 #!/bin/sh
 
+SF_UPG=$(/usr/bin/fw_printenv single_file_upgrade | cut -d = -f 2)
+if [ "$SF_UPG" == "1" ]; then
+    /usr/bin/fw_setenv single_file_upgrade 0
+    rm -fr /data/mender/preserved-files.tgz
+fi
+
 /usr/bin/crontab -u root -l | { cat; echo "*/1 * * * * /opt/influx/release_check.sh"; } | /usr/bin/crontab -
 
 exit 0

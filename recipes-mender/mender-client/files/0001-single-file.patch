@@ -1,0 +1,13 @@
+--- a/support/modules/single-file	2018-03-09 12:34:56.000000000 +0000
++++ b/support/modules/single-file	2025-12-03 12:56:15.046870417 +0000
+@@ -23,6 +23,10 @@
+ 
+ case "$STATE" in
+ 
++    Download)
++        /usr/sbin/fw_setenv single_file_upgrade 1
++        ;;
++
+     NeedsArtifactReboot)
+         echo "No"
+         ;;

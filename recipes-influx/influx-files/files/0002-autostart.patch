@@ -6,9 +6,9 @@
  fi
 +#
 +# Avoiding the sleep during OTA update 
-+INF_UPG=$(/usr/sbin/fw_printenv influx_upgrade | cut -d = -f 2)
-+if [ $INF_UPG == "1" ]; then
-+	/usr/bin/systemctl start end_influx_upgrade.service
++INF_UPG=$(/usr/bin/fw_printenv influx_upgrade | cut -d = -f 2)
++if [ "$INF_UPG" == "1" ]; then
++	/usr/bin/systemctl start end_influx_upgrade.service &
 +fi
  
  # Power up the Quectel chip
