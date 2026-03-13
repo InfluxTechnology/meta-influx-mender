@@ -11,6 +11,7 @@ SRC_URI:append = "\
     file://0002-autostart.patch \
     file://0003-autostart.patch \
     file://0004-autostart.patch \
+    file://0005-autostart.patch \    
     file://preserved-files \
 "
 

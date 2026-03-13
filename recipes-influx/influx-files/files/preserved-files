@@ -5,3 +5,4 @@
 /etc/mender/mender.conf
 /etc/fw_env.config
 /etc/hostname
+/var/lib/tailscale/

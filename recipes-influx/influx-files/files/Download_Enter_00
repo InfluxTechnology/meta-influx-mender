@@ -5,4 +5,10 @@ tar -czf /data/mender/preserved-files.tgz $FILES
 
 /usr/sbin/fw_setenv influx_upgrade 1
 
+# keep tailscale status
+TA=$(systemctl is-active tailscaled)
+fw_setenv tailscale_actile "$TA"
+TE=$(systemctl is-enabled tailscaled)
+fw_setenv tailscale_enabled "$TE"
+
 exit 0
