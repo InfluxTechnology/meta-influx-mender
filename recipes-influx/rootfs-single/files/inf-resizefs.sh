@@ -1,8 +1,5 @@
 #!/bin/sh
 
-systemctl --no-reload disable resizefs.service
-exit 0
-
 mv /data/mender /opt/influx/
 
 # Locate mmc device with a boot0 partition and extract device path
@@ -45,6 +42,6 @@ partprobe "$devpath" || true
 # Remove the service. Should only be run once
 systemctl --no-reload disable resizefs.service
 
-mv /opt/influx/mender /data
+mv /opt/influx/mender /data/
 
 #reboot
