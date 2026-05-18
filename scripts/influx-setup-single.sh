@@ -1,0 +1,2 @@
+. influx-setup-mender.sh $@
+
