@@ -1,0 +1,11 @@
+--- a/meta-influx-mender/recipes-influx/influx-files/files/Download_Enter_00    2026-05-18 13:34:39.539599231 +0300
++++ b/meta-influx-mender/recipes-influx/influx-files/files/Download_Enter_00    2026-05-19 17:06:15.389125245 +0300
+@@ -1,8 +1,5 @@
+ #!/bin/sh
+ 
+-FILES=$(cat /data/mender/preserved-files | grep -v '#' )
+-tar -czf /data/mender/preserved-files.tgz $FILES 
+-
+ /usr/sbin/fw_setenv influx_upgrade 1
+ 
+ exit 0
