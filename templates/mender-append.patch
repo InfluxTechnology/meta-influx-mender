@@ -1,0 +1,8 @@
+--- a/meta-influx-mender/recipes-mender/mender-client/mender_%.bbappend 2026-05-18 14:23:34.026331767 +0300
++++ b/meta-influx-mender/recipes-mender/mender-client/mender_%.bbappend 2026-05-20 09:20:43.887166575 +0300
+@@ -13,4 +13,5 @@
+     rm -fr ${D}/usr/share/mender/inventory/mender-inventory-intervals
+     rm -fr ${D}/usr/share/mender/inventory/mender-inventory-rootfs-type
+     rm -fr ${D}/usr/share/mender/inventory/mender-inventory-update-modules
++    rm -fr ${D}/usr/share/mender/modules/v3/rootfs-image
+ }
