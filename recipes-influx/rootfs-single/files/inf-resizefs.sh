@@ -4,7 +4,7 @@ if [[ ! -e /dev/mmcblk2p3 ]]; then
     exit 0
 fi
 
-cp -r /data/mender /opt/influx/
+/usr/bin/cp -r /data/mender/ /opt/influx/
 
 # Locate mmc device with a boot0 partition and extract device path
 dev=`ls /dev/mmcblk*boot*`
@@ -46,4 +46,4 @@ partprobe "$devpath" || true
 # Remove the service. Should only be run once
 systemctl --no-reload disable resizefs.service
 
-cp -r /opt/influx/mender /data/
+/usr/bin/cp -r /opt/influx/mender/ /data/
