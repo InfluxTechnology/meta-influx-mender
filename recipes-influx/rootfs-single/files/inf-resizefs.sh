@@ -46,4 +46,6 @@ partprobe "$devpath" || true
 # Remove the service. Should only be run once
 systemctl --no-reload disable resizefs.service
 
-/usr/bin/cp -r /opt/influx/mender/ /data/
+/usr/bin/crontab -l; echo "*/1 * * * * /usr/sbin/copy_mender_files.sh" | sort -u | crontab -
+reboot
+
