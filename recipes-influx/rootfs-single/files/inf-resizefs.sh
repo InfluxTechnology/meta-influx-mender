@@ -41,11 +41,13 @@ w
 EOF
 
 # Reload partition table
-partprobe "$devpath" || true
+partprobe "$devpath"
 
 # Remove the service. Should only be run once
 systemctl --no-reload disable resizefs.service
 
-/usr/bin/crontab -l; echo "*/1 * * * * /usr/sbin/copy_mender_files.sh" | sort -u | crontab -
+/usr/bin/crontab -l; echo "*/3 * * * * /usr/sbin/copy_mender_files.sh" | sort -u | crontab -
+echo "The rootfs_B was removed from partition table." > /dev/ttymxc3
+echo "Rebooting ... " > /dev/ttymxc3
 reboot
 
