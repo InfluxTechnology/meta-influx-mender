@@ -1,4 +1,4 @@
 
 # Use only one rootfs
 IMAGE_INSTALL:append = " rootfs-single "  
-MENDER_ARTIFACT_NAME = "single"
+MENDER_ARTIFACT_NAME = "${INFLUX_RELEASE}_single"
