@@ -1,7 +1,0 @@
---- a/opt/influx/autostart.sh	2026-01-14 13:42:48.632629456 +0200
-+++ b/opt/influx/autostart.sh	2026-01-14 13:21:32.733553199 +0200
-@@ -26,3 +26,4 @@
- systemctl stop serial-getty@ttymxc1.service
- systemctl disable serial-getty@ttymxc1.service
- 
-+/opt/influx/local_settings.sh
