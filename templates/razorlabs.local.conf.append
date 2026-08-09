@@ -21,7 +21,7 @@ VIRTUAL-RUNTIME_initscripts = ""
 
 # RasozLabs account
 MENDER_SERVER_URL = "https://eu.hosted.mender.io"
-MENDER_TENANT_TOKEN = "aQDGn5RY503YvEUOr2j3SnZIWts107yNJDkt-V1KgDI"
+MENDER_TENANT_TOKEN = "<YOUR_MENDER_TENANT_TOKEN>"  # set your own tenant token here - do not commit a real one
 
 MENDER_FEATURES_DISABLE:append = " mender-bios mender-grub mender-image-bios imender-image-gpt mender-image-ubi"
 MENDER_FEATURES_DISABLE:append = " mender-image-uefi mender-partuuid mender-ubi "
