@@ -21,7 +21,8 @@ DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
 VIRTUAL-RUNTIME_initscripts = ""
 
 MENDER_SERVER_URL = "https://eu.hosted.mender.io"
-MENDER_TENANT_TOKEN = "<YOUR_MENDER_TENANT_TOKEN>"  # set your own tenant token here - do not commit a real one
+# set your own tenant token here
+MENDER_TENANT_TOKEN = "<YOUR_MENDER_TENANT_TOKEN>"  
 
 #MENDER_SERVER_URL = "https://docker.mender.io"
 #FILESEXTRAPATHS:prepend:pn-mender := "<DIRECTORY-CONTAINING-server.crt>:"
