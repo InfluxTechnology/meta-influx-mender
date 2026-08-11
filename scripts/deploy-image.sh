@@ -8,7 +8,8 @@ if [[ ! -d $CURR_DIR ]]; then
     exit
 fi
 
-BUILD="influx-image-base"
+IMG_FILE=$(find ../sources/meta-influx -type f -name 'influx-image*.bb' -exec  basename {} +)
+BUILD=$(echo $IMG_FILE | cut -d '.' -f 1)
 MACHINE=$(sudo cat $CURR_DIR/conf/local.conf | grep 'MACHINE' |  grep -v 'IMAGE_BOOT_FILES' | sed "s/'//g" | sed "s/ //g" | awk -F '??=' '{print $2}')
 
 TMP_DIR=$CURR_DIR"/tmp/deploy/images/""$MACHINE"
